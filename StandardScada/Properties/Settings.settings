@@ -1,0 +1,35 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="StandardScada.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="User" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ADMIN</Value>
+    </Setting>
+    <Setting Name="PassWord" Type="System.String" Scope="User">
+      <Value Profile="(Default)">123</Value>
+    </Setting>
+    <Setting Name="Remember" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IPPLC" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.101</Value>
+    </Setting>
+    <Setting Name="SQL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=DESKTOP-NTMP1NN;Initial Catalog=SCADA_LV;User ID=sa;Password=123456;Connect Timeout=2</Value>
+    </Setting>
+    <Setting Name="Excel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\DATA</Value>
+    </Setting>
+    <Setting Name="Update" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+    <Setting Name="SCADA_LVConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=DESKTOP-NTMP1NN;Initial Catalog=SCADA_LV;Persist Security Info=True;User ID=sa;Password=123456&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=DESKTOP-NTMP1NN;Initial Catalog=SCADA_LV;Persist Security Info=True;User ID=sa;Password=123456</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

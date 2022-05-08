@@ -1,0 +1,586 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{220896D7-A70C-42B2-8F81-5398B6BA7255}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StandardScada</RootNamespace>
+    <AssemblyName>StandardScada</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.95.4\lib\net40\ClosedXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.12.3.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.12.3\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=5.10.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.5.10.3\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Json, Version=5.5.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.Json.5.5.0\lib\net451\FluentAssertions.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net45\FontAwesome.Sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="S7.Net">
+      <HintPath>C:\Users\proch\Desktop\LV\S7netplus.0.1.4\lib\net40\S7.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="SymbolFactoryDotNet, Version=2.0.0.221, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\proch\Desktop\LV\SymbolFactory_Net_with_patch\SymbolFactoryDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SymbolFactoryNetEngine, Version=2.0.0.221, Culture=neutral, PublicKeyToken=5107b9c608443dcc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\proch\Desktop\LV\SymbolFactory_Net_with_patch\SymbolFactoryNetEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="ZedGraph">
+      <HintPath>..\..\..\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frAbout.Designer.cs">
+      <DependentUpon>frAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frAlarmPLC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frAlarmPLC.Designer.cs">
+      <DependentUpon>frAlarmPLC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frAlarmSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frAlarmSQL.Designer.cs">
+      <DependentUpon>frAlarmSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frChart.Designer.cs">
+      <DependentUpon>frChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frCommunication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frCommunication.Designer.cs">
+      <DependentUpon>frCommunication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frDocuments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frDocuments.Designer.cs">
+      <DependentUpon>frDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frEquipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frEquipment.Designer.cs">
+      <DependentUpon>frEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frExcel.Designer.cs">
+      <DependentUpon>frExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frHistoryData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frHistoryData.designer.cs">
+      <DependentUpon>frHistoryData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frHistoryStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frHistoryStatus.Designer.cs">
+      <DependentUpon>frHistoryStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frLogin.designer.cs">
+      <DependentUpon>frLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frMain.Designer.cs">
+      <DependentUpon>frMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frManMotorCA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frManMotorCA.designer.cs">
+      <DependentUpon>frManMotorCA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frManMotorDH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frManMotorDH.Designer.cs">
+      <DependentUpon>frManMotorDH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frMix1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frMix1.Designer.cs">
+      <DependentUpon>frMix1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frMix2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frMix2.Designer.cs">
+      <DependentUpon>frMix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frMix3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frMix3.Designer.cs">
+      <DependentUpon>frMix3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frMix4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frMix4.Designer.cs">
+      <DependentUpon>frMix4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frMotor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frMotor.Designer.cs">
+      <DependentUpon>frMotor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frParameter.designer.cs">
+      <DependentUpon>frParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frStandard.Designer.cs">
+      <DependentUpon>frStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve1.Designer.cs">
+      <DependentUpon>frValve1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve10.Designer.cs">
+      <DependentUpon>frValve10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve11.Designer.cs">
+      <DependentUpon>frValve11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve2.Designer.cs">
+      <DependentUpon>frValve2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve3.Designer.cs">
+      <DependentUpon>frValve3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve4.Designer.cs">
+      <DependentUpon>frValve4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve5.Designer.cs">
+      <DependentUpon>frValve5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve6.Designer.cs">
+      <DependentUpon>frValve6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve7.Designer.cs">
+      <DependentUpon>frValve7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve8.Designer.cs">
+      <DependentUpon>frValve8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frValve9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frValve9.Designer.cs">
+      <DependentUpon>frValve9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLC.cs" />
+    <Compile Include="PLC_DB100Read.cs" />
+    <Compile Include="PLC_DB101Write.cs" />
+    <Compile Include="PLC_DB102_RetainWrite.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SCADA_LVDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCADA_LVDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SQL.cs" />
+    <EmbeddedResource Include="frAbout.resx">
+      <DependentUpon>frAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frAlarmPLC.resx">
+      <DependentUpon>frAlarmPLC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frAlarmSQL.resx">
+      <DependentUpon>frAlarmSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frChart.resx">
+      <DependentUpon>frChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frCommunication.resx">
+      <DependentUpon>frCommunication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frDocuments.resx">
+      <DependentUpon>frDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frEquipment.resx">
+      <DependentUpon>frEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frExcel.resx">
+      <DependentUpon>frExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frHistoryData.resx">
+      <DependentUpon>frHistoryData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frHistoryStatus.resx">
+      <DependentUpon>frHistoryStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frLogin.resx">
+      <DependentUpon>frLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frMain.resx">
+      <DependentUpon>frMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frManMotorCA.resx">
+      <DependentUpon>frManMotorCA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frManMotorDH.resx">
+      <DependentUpon>frManMotorDH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frMix1.resx">
+      <DependentUpon>frMix1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frMix2.resx">
+      <DependentUpon>frMix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frMix3.resx">
+      <DependentUpon>frMix3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frMix4.resx">
+      <DependentUpon>frMix4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frMotor.resx">
+      <DependentUpon>frMotor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frParameter.resx">
+      <DependentUpon>frParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frStandard.resx">
+      <DependentUpon>frStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve1.resx">
+      <DependentUpon>frValve1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve10.resx">
+      <DependentUpon>frValve10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve11.resx">
+      <DependentUpon>frValve11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve2.resx">
+      <DependentUpon>frValve2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve3.resx">
+      <DependentUpon>frValve3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve4.resx">
+      <DependentUpon>frValve4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve5.resx">
+      <DependentUpon>frValve5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve6.resx">
+      <DependentUpon>frValve6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve7.resx">
+      <DependentUpon>frValve7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve8.resx">
+      <DependentUpon>frValve8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frValve9.resx">
+      <DependentUpon>frValve9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SCADA_LVDataSet.xsc">
+      <DependentUpon>SCADA_LVDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SCADA_LVDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SCADA_LVDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SCADA_LVDataSet.xss">
+      <DependentUpon>SCADA_LVDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\analyze.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\applications_internet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\browser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera_test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\companies_star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer_service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_notes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\face_book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gpm_primary_060_charging.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\history.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hosting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\laptop_charge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\machine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\network_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pcb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refesh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shoping_cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\size.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\software.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spiralscreendiag1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\technology.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zalo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QDlRD72X_400x400.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1200px-Logo-hcmut.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\icons8-about-50.png" />
+    <Content Include="Resources\icons8-cloud-database-50.png" />
+    <Content Include="Resources\icons8-combo-chart-50.png" />
+    <Content Include="Resources\icons8-database-administrator-50.png" />
+    <Content Include="Resources\icons8-exit-50.png" />
+    <Content Include="Resources\icons8-inquiry-50.png" />
+    <Content Include="Resources\icons8-more-info-50.png" />
+    <Content Include="Resources\icons8-running-24.png" />
+    <Content Include="Resources\icons8-save-50.png" />
+    <Content Include="Resources\icons8-services-50.png" />
+    <Content Include="Resources\icons8-stop-sign-64.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
